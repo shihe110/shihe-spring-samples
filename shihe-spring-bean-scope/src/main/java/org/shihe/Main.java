@@ -1,6 +1,6 @@
 package org.shihe;
 
-import org.shihe.config.BeanScopeConfig;
+import org.shihe.env.config.BeanScopeConfig;
 import org.shihe.service.DemoPrototypeService;
 import org.shihe.service.DemoSingletonService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
