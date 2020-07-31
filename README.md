@@ -30,3 +30,6 @@
 
 ## spring 条件注解@Conditional
 [Scheduling](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-conditional)
+
+## 组合注解和元注解
+[组合注解和元注解](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-annotation)
