@@ -1,7 +1,7 @@
 package org.shihe;
 
 import org.shihe.bean.DemoBeanService;
-import org.shihe.config.DemoInitDesConfig;
+import org.shihe.env.config.DemoInitDesConfig;
 import org.shihe.jsr250.DemoJSR250Service;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

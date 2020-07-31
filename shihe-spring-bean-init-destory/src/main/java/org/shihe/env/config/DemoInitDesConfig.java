@@ -1,4 +1,4 @@
-package org.shihe.config;
+package org.shihe.env.config;
 
 import org.shihe.bean.DemoBeanService;
 import org.shihe.jsr250.DemoJSR250Service;
