@@ -1,6 +1,7 @@
 package org.shihe;
 
 import org.shihe.config.ConditionConfig;
+import org.shihe.os.ListService;
 import org.shihe.os.WindowsListService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,7 +16,7 @@ public class MainCondition {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConditionConfig.class);
 
-        WindowsListService bean = context.getBean(WindowsListService.class);
+        ListService bean = context.getBean(ListService.class);
         String s = bean.showListCmd();
         System.out.println(context.getEnvironment().getProperty("os.name")
         +"系统下的查看列表命令为："
