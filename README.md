@@ -12,3 +12,12 @@
 
 ## Bean初始化和销毁的两种方式
 [shihe-spring-bean-init-destory](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-bean-init-destory)
+
+## spring profile配置切换
+[profile配置切换](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-profile)
+
+## spring spplication event 事件
+[事件监听](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-application-event)
+
+## spring Aware感知
+[获取aware能力](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-aware)
