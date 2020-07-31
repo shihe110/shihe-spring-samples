@@ -1,6 +1,6 @@
 package org.shihe;
 
-import org.shihe.config.ElConfig;
+import org.shihe.env.config.ElConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
