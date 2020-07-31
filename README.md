@@ -27,3 +27,6 @@
 
 ## spring 计划任务
 [Scheduling](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-scheduled)
+
+## spring 条件注解@Conditional
+[Scheduling](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-conditional)
