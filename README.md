@@ -33,3 +33,6 @@
 
 ## 组合注解和元注解
 [组合注解和元注解](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-annotation)
+
+## spring对测试的支持
+[spring test](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-test)
