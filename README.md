@@ -21,3 +21,9 @@
 
 ## spring Aware感知
 [获取aware能力](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-aware)
+
+## spring 多线程
+[Multi Thread](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-multi-thread)
+
+## spring 计划任务
+[Scheduling](https://github.com/shihe110/shihe-spring-samples/tree/master/shihe-spring-scheduled)
