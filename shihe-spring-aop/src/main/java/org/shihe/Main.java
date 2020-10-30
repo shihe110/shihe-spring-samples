@@ -1,9 +1,9 @@
 package org.shihe;
 
 import org.shihe.aop.AopConfig;
-import org.shihe.service.DemoAnnotationService;
-import org.shihe.service.DemoMethodService;
+import org.shihe.service.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @ClassName Mian
@@ -15,11 +15,23 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
+        /*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
         DemoMethodService bean = context.getBean(DemoMethodService.class);
         DemoAnnotationService bean1 = context.getBean(DemoAnnotationService.class);
         bean.add();
         bean1.add();
-        context.close();
+        context.close();*/
+
+        // spring api aop
+       /* ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("applicationContext.xml");
+        SpringApiServcie demoSpringApiService = c.getBean("springApiServcie", SpringApiServcie.class);
+        demoSpringApiService.hello();*/
+
+       // custom aop
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-custom.xml");
+        CustomService customService = ctx.getBean("customService", CustomService.class);
+        customService.custom();
+
+
     }
 }
