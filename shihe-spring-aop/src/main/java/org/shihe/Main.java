@@ -23,7 +23,7 @@ public class Main {
         context.close();*/
 
         // spring api aop
-       /* ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("applicationContext.xml");
+       /* ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("applicationContext-springapi.xml");
         SpringApiServcie demoSpringApiService = c.getBean("springApiServcie", SpringApiServcie.class);
         demoSpringApiService.hello();*/
 
