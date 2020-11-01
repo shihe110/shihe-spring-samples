@@ -15,12 +15,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
     public static void main(String[] args) {
-        /*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
         DemoMethodService bean = context.getBean(DemoMethodService.class);
         DemoAnnotationService bean1 = context.getBean(DemoAnnotationService.class);
         bean.add();
         bean1.add();
-        context.close();*/
+        context.close();
 
         // spring api aop
        /* ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("applicationContext-springapi.xml");
@@ -28,10 +28,19 @@ public class Main {
         demoSpringApiService.hello();*/
 
        // custom aop
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-custom.xml");
+        /*ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-custom.xml");
         CustomService customService = ctx.getBean("customService", CustomService.class);
-        customService.custom();
+        customService.custom();*/
 
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-annotation.xml");
+        AnnotationService customService = ctx.getBean("annotationService", AnnotationService.class);
+        customService.hello();
+
+        int beanDefinitionCount = ctx.getBeanDefinitionCount();
+        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+        for (int i = 0; i < beanDefinitionCount; i++) {
+            System.out.println(i + " " +beanDefinitionNames[i]);
+        }
 
     }
 }

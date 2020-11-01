@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       ">
+   <!-- <bean id="annotationService" class="org.shihe.service.AnnotationService"/>-->
+    <context:component-scan base-package="org.shihe.service"/>
+
+    <!--注解切面-->
+    <bean id="annoLog" class="org.shihe.anno.AnnoLog"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"> <!--默认为false 表示使用jdk动态代理  true表示cglib 也要看是否有接口声明-->
+    </aop:aspectj-autoproxy>
+
+
+
+</beans>
