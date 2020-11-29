@@ -16,5 +16,6 @@ public class DemoEventListener implements ApplicationListener<DemoEvent> {
     public void onApplicationEvent(DemoEvent demoEvent) {
         String msg = demoEvent.getMsg();
         System.out.println("=================="+msg+"=================");
+        System.out.println("处理后续业务");
     }
 }

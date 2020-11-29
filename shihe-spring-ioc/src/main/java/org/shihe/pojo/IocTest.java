@@ -19,7 +19,7 @@ import java.io.InputStream;
 public class IocTest {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        User user1 = context.getBean("user1", User.class);
+        /*User user1 = context.getBean("user1", User.class);
         System.out.println(user1.toString());
         System.out.println("---------------------------------------------");
         User user2 = context.getBean("user2", User.class);
@@ -32,7 +32,12 @@ public class IocTest {
         System.out.println(dog);
 
         Dog dog2 = context.getBean("dog2", Dog.class);
-        System.out.println(dog2);
+        System.out.println(dog2);*/
+        HelloController helloController = context.getBean("helloController", HelloController.class);
+        HelloService helloService = context.getBean("helloService", HelloService.class);
+        System.out.println(helloService.name);
+        helloController.hello();
+        System.out.println(helloService.name);
 
     }
 }

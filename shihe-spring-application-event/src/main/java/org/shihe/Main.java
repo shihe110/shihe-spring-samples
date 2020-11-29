@@ -1,6 +1,10 @@
 package org.shihe;
 
+import org.shihe.event.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName Main
@@ -17,5 +21,17 @@ public class Main {
         bean.publish("事件发布");
 
         context.close();
+
+        /*List<AbstractEventListener> listeners = new ArrayList<>();
+        listeners.add(new BusEventListener(1));
+        listeners.add(new CarEventListener(2));
+
+        EventMutilcaster eventMutilcaster = new EventMutilcaster(listeners);
+
+        Order order = new Order("ID" + System.currentTimeMillis());
+        EventObject eventObject = new EventObject(order);
+
+        eventMutilcaster.mutilcasEvent(new OrderCallbackEvent(eventObject));*/
+
     }
 }
