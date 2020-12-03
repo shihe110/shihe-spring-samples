@@ -1,3 +1,5 @@
+package array;
+
 /**
  * @ClassName Array
  * @Description TODO
@@ -58,21 +60,29 @@ public class Array<E> {
         add(0,e);
     }
     // 获取一个元素
-    E get(int index){
+    public E get(int index){
         if (index < 0 || index >= size){
             new IllegalArgumentException("Get failed, Index is illegal");
         }
         return data[index];
     }
+    // 获取最后一个元素
+    public E getLast(){
+        return get(size-1);
+    }
+    // 获取第一个元素
+    public E getFirst(){
+        return get(0);
+    }
     // 修改指定位置元素
-    void set(int index, E e){
+    public void set(int index, E e){
         if (index < 0 || index >= size){
             new IllegalArgumentException("Set failed, Index is illegal");
         }
         data[index] = e;
     }
     // 是否包含
-    boolean contains(E e){
+    public boolean contains(E e){
         for (int i = 0; i < size; i++) {
             if (data[i] == e){
                 return true;
@@ -90,7 +100,7 @@ public class Array<E> {
         return -1;
     }
     // 删除指定位置的元素,从0开始
-    E remove(int index){
+    public E remove(int index){
         if (index < 0 || index >= size){
             throw new IllegalArgumentException("Del failed, Index is illegal");
         }
@@ -107,15 +117,15 @@ public class Array<E> {
         return ret;
     }
     // 删除第0个元素
-    E removeFirst(){
+    public E removeFirst(){
         return remove(0);
     }
     // 删除最后一个元素
-    E removeLast(){
+    public E removeLast(){
         return remove(size -1);
     }
     // 如果有重复e的话，只删除第一个e
-    void removeElement(E e){
+    public void removeElement(E e){
         int index = find(e);
         if (index!=-1){
             remove(index);
