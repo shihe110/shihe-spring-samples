@@ -12,8 +12,8 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        int opCount = 100000000;
-        /*Queue<Integer> arrayQueue = new ArrayQueue<>();
+        int opCount = 10000000;
+       /* Queue<Integer> arrayQueue = new ArrayQueue<>();
         double v = testQueue(arrayQueue, opCount);
         System.out.println("ArrayQueue time: "+v + " s");*/
 
@@ -21,6 +21,12 @@ public class Main {
         Queue<Integer> loopQueue = new LoopQueue<>();
         double v1 = testQueue(loopQueue, opCount);
         System.out.println("LoopQueue time: "+v1 + " s");
+
+
+        System.out.println("----------------------");
+        Queue<Integer> linkQueue = new LinkedListQueue<>();
+        double v2 = testQueue(linkQueue, opCount);
+        System.out.println("LinkedQueue time: "+v2 + " s");
 
     }
 
