@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.ArrayList;
+
 /**
  * @InterfaceName LinkedList
  * @Description TODO
@@ -38,6 +40,17 @@ public class LinkedList<E> {
         dummyHead = new Node();
         size = 0;
     }
+    // 链表反转
+    public LinkedList<E> reverse(){
+        LinkedList<E> linkedList = new LinkedList<>();
+        Node prev = dummyHead;
+        for (int i = 0; i < size; i++) {
+            prev = prev.next;
+            linkedList.addFirst(prev.e);
+        }
+        return linkedList;
+    }
+
     // 返回链表中的元素个数
     public int getSize(){
         return size;
@@ -46,17 +59,17 @@ public class LinkedList<E> {
     public boolean isEmpty(){
         return size==0;
     }
-
     // 在链表中间index位置添加一个新的元素e
     public void add(int index, E e){
         if (index < 0 || index > size){
             throw new IllegalArgumentException("Add failed. Illegal index.");
         }
-        //
+        // prev节点
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
             prev = prev.next;
         }
+        // 新建节点 断开 挂载
         prev.next = new Node(e, prev.next);
         size ++;
         /*if (index == 0){// 链表头
@@ -187,7 +200,10 @@ public class LinkedList<E> {
             System.out.println(linkedList);
         }
 
-        linkedList.add(2, 132);
+        linkedList = linkedList.reverse();
+        System.out.println(linkedList);
+
+        /*linkedList.add(2, 132);
         System.out.println(linkedList);
 
         linkedList.remove(2);
@@ -197,6 +213,6 @@ public class LinkedList<E> {
         System.out.println(linkedList);
 
         linkedList.removeLast();
-        System.out.println(linkedList);
+        System.out.println(linkedList);*/
     }
 }
