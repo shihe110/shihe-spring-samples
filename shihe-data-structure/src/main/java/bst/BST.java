@@ -1,8 +1,6 @@
 package bst;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @ClassName BST - Binary Search Tree
@@ -216,19 +214,50 @@ public class BST<E extends Comparable<E>> {
     // 删除二分搜索树中的最小值元素
     public E removeMin(){
         E e = minimum();
+        // 删除根节点为root的树的最小值，并返回该树的根节点
         root = removeMin(root);
         return e;
     }
 
     private Node removeMin(Node node) {
-        // 递归出口
+        // 递归出口-当前以node为根的节点已经走到最左端-叶子节点
+        if (node.left == null){
+            // 该根节点可能有右节点-保存右节点
+            Node rightNode = node.right;
+            // 删除节点node即该节点已经是最左节点但可能有右子树-将其删除即将该节点断开连接right是其作为根节点唯一对外的连接 赋null即删除
+            node.right = null;
+            size --;
+            // 根节点node.right=null脱离树结构后，新的根节点为rightNode
+            return rightNode;
+        }
+        // 递归调用-根节点node，该节点node还有左孩子
+        // 即对node.left子树调用其删除最小节点递归函数
+        node.left = removeMin(node.left);// removeMin(node.left)返回node.left的根节点和原根节点node连接-即node.left=返回节点
+        // 根节点任然为node
+        return node;
+    }
+    // 删除二分搜索树种最大元素
+    public E removeMax(){
+        E max = maxmuum();
+        root = removeMax(root);
+        return max;
+    }
+
+    private Node removeMax(Node node) {
+        // 递归出口-已经为最大右子树
         if (node.right == null){
+            // 承接可能存在的左子树
             Node leftNode = node.left;
+            // 删除节点
             node.left = null;
             size --;
+            // 返回根节点
             return leftNode;
         }
-        node.left = removeMin(node.left);
+        // 该节点不是最大节点
+        // 删除node有子树中的最大值，并返回其子根节点，并连接原节点
+        node.right = removeMax(node.right);
+        // 总根节点为node
         return node;
     }
 
@@ -261,10 +290,30 @@ public class BST<E extends Comparable<E>> {
 
     public static void main(String[] args) {
         BST<Integer> bst = new BST<>();
-        int[] nums = {3, 5, 4, 6, 8, 2};
+        Random random = new Random();
+        int n = 1000;
+        for (int i = 0; i < n; i++) {
+            bst.add(random.nextInt(10000));
+        }
+
+        ArrayList<Integer> nums = new ArrayList<>();
+        while (!bst.isEmpty()){
+            Integer min = bst.removeMin();
+            nums.add(min);
+        }
+
+        System.out.println(nums);
+
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums.get(i-1)>nums.get(i)){
+                throw new IllegalArgumentException("Error");
+            }
+        }
+        System.out.println("removeMin is ok");
+        /*int[] nums = {3, 5, 4, 6, 8, 2};
         for (int i = 0; i < nums.length; i++) {
             bst.add(nums[i]);
-        }
+        }*/
 
        /* System.out.println(bst.contains(3));
         bst.preOrder();
@@ -281,9 +330,11 @@ public class BST<E extends Comparable<E>> {
         System.out.println(minimum);
         System.out.println("--------");
         System.out.println(bst.maxmuum());*/
-        System.out.println("***************");
-        bst.removeMin();
-        bst.preOrderNR();
+//        System.out.println("***************");
+       /* bst.removeMin();
+        bst.preOrderNR();*/
+        /*Integer integer = bst.removeMin();
+        System.out.println(integer);*/
     }
 
 }
