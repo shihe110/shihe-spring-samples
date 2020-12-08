@@ -260,6 +260,62 @@ public class BST<E extends Comparable<E>> {
         // 总根节点为node
         return node;
     }
+    // 从二分搜索树中删除元素为e的节点
+    public void remove(E e){
+        // 在root为根节点的二分搜索树中删除e
+        root = remove(root, e);
+    }
+
+    private Node remove(Node node, E e) {
+        // 在node为根的二分搜索树中没找到e
+        if (node == null){
+            return null;
+        }
+        // 待删除节点在左子树
+        if (e.compareTo(node.e) < 0){
+            node.left = remove(node.left, e);
+            return node;
+        }
+        // 待删除节点在右子树
+        else if (e.compareTo(node.e) > 0){
+            node.right = remove(node.right, e);
+            return node;
+        }
+        // 待删除节点-为根节点
+        // 后驱删除
+        else {//(e.compareTo(node.e) == 0)
+            // 待删除节点左子树为null
+            if (node.left == null){
+               Node rightNode = node.right;
+               node.right = null;
+               size --;
+               return rightNode;
+            }
+            // 待删除节点右子树为null
+            if (node.right == null){
+                Node leftNode = node.left;
+                node.left = null;
+                size --;
+                return leftNode;
+            }
+            // 待删除节点左右子树都不为null
+            // 找到比删除节点大的最小节点，即删除节点右子树的最小节点
+            Node successor = minimum(node.right);
+            // successor-待删除节点的后继节点-替换要删除的节点
+            // 后继节点的右孩子-是待删除节点的右子树删除最小节点的后的子树
+            successor.right = removeMin(node.right);
+            // removeMin中做了size-- 但其实被successor承接了，并没有被删除，所以要加回来
+            size ++;
+            // 后继节点的左孩子-是删除节点的左孩子
+            successor.left = node.left;
+
+            // 删除待删除节点
+            node.left = node.right = null;
+            size --;
+
+            return node;
+        }
+    }
 
     @Override
     public String toString(){
