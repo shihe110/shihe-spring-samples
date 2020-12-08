@@ -178,6 +178,25 @@ public class LinkedList<E> {
         return remove(size -1);
     }
 
+    public void removeElement(E e){
+        Node prev = dummyHead;// 不是从dummyHead开始的，因为可能删除第0个元素
+        while (prev.next != null){
+            if (prev.next.e.equals(e)){
+                break;
+            }
+            // 当前节点指向下个节点,即指针移动一位，判断下一个
+            prev = prev.next;
+        }
+        // break以后prev停在待删除元素的前一个元素位置
+        if (prev.next != null){
+            // 定义变量delNode指向目标节点prev.next
+            Node delNode = prev.next;
+            // prev节点的next越过待删除节点挂载到其下一个节点，此时delNode前一个元素prev已经脱离，prev和delNode同时指向其下一个元素
+            prev.next = delNode.next;
+            // 待删除元素脱离链表
+            delNode.next = null;
+        }
+    }
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
@@ -200,8 +219,11 @@ public class LinkedList<E> {
             System.out.println(linkedList);
         }
 
-        linkedList = linkedList.reverse();
+        linkedList.removeElement(3);
         System.out.println(linkedList);
+
+        /*linkedList = linkedList.reverse();
+        System.out.println(linkedList);*/
 
         /*linkedList.add(2, 132);
         System.out.println(linkedList);
