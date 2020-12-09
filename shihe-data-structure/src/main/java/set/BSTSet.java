@@ -1,6 +1,10 @@
 package set;
 
 import bst.BST;
+import map.FileUtil;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 /**
  * @ClassName BSTSet
@@ -33,5 +37,17 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
     @Override
     public boolean contains(E e) {
         return bst.contains(e);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("pride and prejudice");
+        ArrayList<String> words = new ArrayList<>();
+        FileUtil.readFile("F:\\shihe-spring-samples\\shihe-data-structure\\src\\main\\java\\map\\pride-and-prejudice.txt",words);
+
+        BSTSet<String> set = new BSTSet<>();
+        for (String word : words) {
+            set.add(word);
+        }
+        System.out.println("total words "+set.getSize());
     }
 }

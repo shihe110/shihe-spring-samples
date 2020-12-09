@@ -87,7 +87,7 @@ public class LinkedListMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean contains(K key) {
-        return getNode(key) == null;
+        return getNode(key) != null;
     }
 
     @Override
