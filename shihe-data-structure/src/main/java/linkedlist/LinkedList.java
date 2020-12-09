@@ -142,7 +142,7 @@ public class LinkedList<E> {
     // 查找链表中是否存在元素e
     public boolean contains(E e){
         Node cur = dummyHead.next;
-        while (cur.e != null){
+        while (cur != null){
             if (cur.e.equals(e)){
                 return true;
             }

@@ -1,4 +1,4 @@
-package map;
+package set;
 
 import java.io.BufferedInputStream;
 import java.io.File;

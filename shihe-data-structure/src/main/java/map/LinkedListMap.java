@@ -1,5 +1,8 @@
 package map;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 public class LinkedListMap<K, V> implements Map<K, V> {
     // map基于链表的实现-链表内部类
     private class Node{
@@ -110,5 +113,22 @@ public class LinkedListMap<K, V> implements Map<K, V> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("pride and prejudice");
+        ArrayList<String> words = new ArrayList<>();
+        FileUtil.readFile("F:\\shihe-spring-samples\\shihe-data-structure\\src\\main\\java\\map\\pride-and-prejudice.txt",words);
+
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+        for (String word : words) {
+            if (map.containsKey(word)){
+                map.put(word, map.get(word)+1);
+            }
+            else
+                map.put(word, 1);
+        }
+        System.out.println("pride :"+map.get("pride"));
+        System.out.println("prejudice :"+map.get("prejudice"));
     }
 }

@@ -2,6 +2,8 @@ package set;
 
 import linkedlist.LinkedList;
 
+import java.util.ArrayList;
+
 /**
  * @ClassName LinkedListSet
  * @Description TODO
@@ -41,5 +43,17 @@ public class LinkedListSet<E> implements Set<E> {
         list.removeElement(e);
     }
 
+    public static void main(String[] args) {
+        System.out.println("傲慢与偏见");
+        ArrayList<String> words = new ArrayList<>();
+        FileUtil.readFile("F:\\shihe-spring-samples\\shihe-data-structure\\src\\main\\java\\set\\pride-and-prejudice.txt", words);
+        System.out.println("Total words "+words.size());
+
+        LinkedListSet<String> set = new LinkedListSet<>();
+        for (String word : words) {
+            set.add(word);
+        }
+        System.out.println("different words "+set.getSize());
+    }
 
 }
