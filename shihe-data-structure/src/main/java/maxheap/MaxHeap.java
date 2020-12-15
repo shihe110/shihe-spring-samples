@@ -22,7 +22,7 @@ public class MaxHeap<E extends Comparable<E>> {
         data = new Array<>();
     }
 
-    public int getSize(){
+    public int size(){
         return data.getSize();
     }
 
