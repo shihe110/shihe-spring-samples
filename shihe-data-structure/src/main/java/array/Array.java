@@ -10,11 +10,20 @@ package array;
 public class Array<E> {
     private E[] data;
     private int size;
-    // 传入容量构造数组
-    public Array(int capacity) {
+    // 构造函数，传入数组的容量capacity构造Array
+    public Array(int capacity){
         data = (E[])new Object[capacity];
         size = 0;
     }
+    // 传入一个数组参数，构造新数组
+    public Array(E[] arr){
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     // 无参构造，默认capacity为8
     public Array() {
         this(8);
@@ -38,10 +47,10 @@ public class Array<E> {
         add(size,e);
     }
     // 向指定位置添加元素
-    public void add(int index, E e){
-        /*if (size==data.length){
+/*    public void add(int index, E e){
+        *//*if (size==data.length){
             throw new IllegalArgumentException("Add failed. Array is full");
-        }*/
+        }*//*
         // index必须合法
         if (index < 0 || index > size){
             throw new IllegalArgumentException("Add failed. Require index>=0 or index<=size");
@@ -53,6 +62,22 @@ public class Array<E> {
             data[i + 1] = data[i];
         }
         data[index] = e;
+        size ++;
+    }*/
+    // 在index索引的位置插入一个新元素e
+    public void add(int index, E e){
+
+        if(index < 0 || index > size)
+            throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
+
+        if(size == data.length)
+            resize(2 * data.length);
+
+        for(int i = size - 1; i >= index ; i --)
+            data[i + 1] = data[i];
+
+        data[index] = e;
+
         size ++;
     }
     // 向第0个位置添加元素
@@ -138,6 +163,19 @@ public class Array<E> {
             newData[i] = data[i];
         }
         data = newData;
+    }
+    // 交换两个下标的元素值
+    public void swap(int i, int j){
+        if (i < 0 || i >= size || j < 0 || j >= size){
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+        // 交换
+        /*E e = get(i);
+        set(i, get(j));
+        set(j, e);*/
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
     @Override
     public String toString() {
