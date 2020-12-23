@@ -64,27 +64,27 @@ public class SegmentTree<E> {
                 queryR >= data.length || queryL > queryR){
             throw new IllegalArgumentException("query index is illegal.");
         }
-        return query(0,0,data.length -1,queryL, queryR);
+        return query(0, 0, data.length - 1, queryL, queryR);
     }
     // 返回以treeID为根的线段树中[l,r]的范围内，子区间[queryL,queryR]的值
     private E query(int treeIndex, int l, int r, int queryL, int queryR) {
-        if (l == queryL && r == queryR)
+        if (l == queryL && r == queryR){
             return tree[treeIndex];
+        }
 
         int mid = l + (r - l) / 2;
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
         // 肯定不在左孩子
-        if (queryL >= mid + 1)
-            return query(rightTreeIndex,mid + 1, r,queryL,queryR);
-        else if (queryR <= mid)
-            return query(leftTreeIndex,l, mid,queryL,queryR);
+        if(queryL >= mid + 1){
+            return query(rightTreeIndex, mid + 1, r, queryL, queryR);
+        }else if(queryR <= mid){
+            return query(leftTreeIndex, l, mid, queryL, queryR);
+        }
 
-        E leftResult = query(leftTreeIndex,l,mid,queryL,mid);
-        E rightResult = query(rightTreeIndex,mid+1,l,mid+1,queryR);
-
-        E merge = merger.merge(leftResult, rightResult);
-        return merge;
+        E leftResult = query(leftTreeIndex, l, mid, queryL, mid);
+        E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
+        return merger.merge(leftResult, rightResult);
     }
 
     @Override
