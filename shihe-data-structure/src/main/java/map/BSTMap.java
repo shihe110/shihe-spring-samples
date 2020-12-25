@@ -107,7 +107,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
             // 删除最小节点
             node.left = node.right = null;
             // 要删除节点
-            return node;
+            return successor;
         }
     }
 
