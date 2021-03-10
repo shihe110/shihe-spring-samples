@@ -9,9 +9,10 @@ package sort;
  */
 public class BubbleSort {
     public static void main(String[] args) {
-        int[] arr = {1,5,3,9,7,4};
+        int[] arr = {1,5,3,9,7,4,6,8,2};
         BubbleSort bs = new BubbleSort();
-        int[] ints = bs.bubbleSort(arr);
+//        int[] ints = bs.bubbleSort(arr);
+        int[] ints = bs.bubbleSortV2(arr);
         for (int i = 0; i < ints.length; i++) {
             System.out.print(ints[i]+" ");
         }
@@ -20,7 +21,7 @@ public class BubbleSort {
     public int[] bubbleSort(int[] arr){
         for (int i = 0; i < arr.length; i++) {
             for (int j = i+1; j < arr.length; j++) {
-                if (arr[i]<arr[j]){
+                if (arr[i]>arr[j]){
                     exchange(arr,i,j);
                 }
             }
@@ -33,6 +34,17 @@ public class BubbleSort {
         temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+    
+    public int[] bubbleSortV2(int[] arr){
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 0; j < arr.length-i; j++) {
+                if (arr[j]>arr[j+1]){
+                    exchange(arr,j,j+1);
+                }
+            }
+        }
+        return arr;
     }
 
 }
